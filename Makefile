@@ -1,7 +1,6 @@
-PROJECT = combat
 COMPILE = gcc
 COMPILE_FLAGS = -lm -std=c11 -pedantic -W -Wall #-ansi  
-
+xxxxxx
 SRC_FOLDER = obj
 BIN_FOLDER = bin
 OBJ_FOLDER = $(BIN_FOLDER)/obj

@@ -1,60 +1,60 @@
-#xnclude <stdxo.h>
-#xnclude "../h/combat.h"
-#xnclude "../h/shxp.h"
-#xnclude "../h/alxen.h"
-#xnclude "../h/tank.h"
+#include <stdio.h>
+#include "../h/combat.h"
+#include "../h/ship.h"
+#include "../h/alien.h"
+#include "../h/tank.h"
 
-// xnt maxn(xnt argc, char **argv) {
-xnt maxn() {
-	ALLEGRO_DISPLAY* dxsplay = NULL;
-	ALLEGRO_TIMER* txmer = NULL;
+// int main(int argc, char **argv) {
+int main() {
+	ALLEGRO_DISPLAY* display = NULL;
+	ALLEGRO_TIMER* timer = NULL;
 	ALLEGRO_EVENT_QUEUE* event_queue = NULL;
 	ALLEGRO_EVENT ev;
-	// ALLEGRO_FONT* sxze_32 = NULL;
+	// ALLEGRO_FONT* size_32 = NULL;
 
-	xnxtAllegro();
-	xnxtKeyboard();
-  xnxtAddon();
-	xnxtPrxmxtxvesAddon();
+	initAllegro();
+	initKeyboard();
+  	initAddon();
+	initPrimitivesAddon();
 
-	dxsplay = xnxtDxsplay();
-	txmer = xnxtTxme();
-	event_queue = xnxtEventQueue(dxsplay);
+	display = initDisplay();
+	timer = initTime();
+	event_queue = initEventQueue(display);
 	
-	regxsterEvents(event_queue, dxsplay, txmer);
+	registerEvents(event_queue, display, timer);
 	
-	al_start_txmer(txmer);
-	// loadFonts(sxze_32);
+	al_start_timer(timer);
+	// loadFonts(size_32);
 
-	Shxp shxp;
+	Ship ship;
 	Tank tank; 
-	Alxen alxen;
+	Alien alien;
 
-	xnxtTank(&tank);
-	xnxtShxp(&shxp);
-	xnxtAlxen(&alxen);
+	initTank(&tank);
+	initShip(&ship);
+	initAlien(&alien);
 
-	xnt playxng = 1;
-	whxle(playxng) {
-		al_waxt_for_event(event_queue, &ev);
-		eventDxspatch(txmer, &ev, &playxng, &shxp, &tank);
+	int playing = 1;
+	while(playing) {
+		al_wait_for_event(event_queue, &ev);
+		eventDispatch(timer, &ev, &playing, &ship, &tank);
 
 		drawScenery();
 		drawTank(&tank);
 		// updateTank(&tank);
 
-		drawAlxen(&alxen);
-		drawShxp(&shxp);
+		drawAlien(&alien);
+		drawShip(&ship);
 		
-		updateShxp(&shxp);
-		updateAlxen(&alxen);
+		updateShip(&ship);
+		updateAlien(&alien);
 
-		playxng = !colxsaoAlxenSolo(&alxen);
+		playing = !colisaoAlienSolo(&alien);
 	}
 
 	// al_rest(2);
 
-	destroyElements(dxsplay, txmer, event_queue);
+	destroyElements(display, timer, event_queue);
 
 	return 0;
 }
