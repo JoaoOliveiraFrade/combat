@@ -36,47 +36,45 @@ create_directories:
 	@echo "Compiling "$@
 	@$(COMPILE) $(COMPILE_FLAGS) -c $(SRC_FOLDER)/$@ -o $(OBJ_FOLDER)/$(patsubst %.c,%.o,$@)
 
-dependencies= \
-	$(OBJ_FOLDER)/main.o \
-	\
-	$(OBJ_FOLDER)/allegro/initAllegro.o \
-	$(OBJ_FOLDER)/allegro/initDisplay.o \
-	$(OBJ_FOLDER)/allegro/initEventQueue.o \
-	$(OBJ_FOLDER)/allegro/initKeyboard.o \
-	$(OBJ_FOLDER)/allegro/initTime.o \
-	$(OBJ_FOLDER)/allegro/initAddon.o \
-	$(OBJ_FOLDER)/allegro/initPrimitivesAddon.o \
-	$(OBJ_FOLDER)/allegro/loadFonts.o \
-	$(OBJ_FOLDER)/allegro/registerEvents.o \
-	$(OBJ_FOLDER)/allegro/destroyElements.o \
-	\
-	$(OBJ_FOLDER)/events/eventDispatch.o \
-	$(OBJ_FOLDER)/events/keyDownEvent.o \
-	$(OBJ_FOLDER)/events/keyUpEvent.o \
-	$(OBJ_FOLDER)/events/mouseEvent.o \
-	$(OBJ_FOLDER)/events/timeEvent.o \
-	$(OBJ_FOLDER)/events/spentASecond.o \
-	\
-	$(OBJ_FOLDER)/scenery/drawScenery.o \
-	\
-	$(OBJ_FOLDER)/grass/drawGrass.o \
-	\
-	$(OBJ_FOLDER)/ship/initShip.o \
-	$(OBJ_FOLDER)/ship/drawShip.o \
-	$(OBJ_FOLDER)/ship/updateShip.o \
-	\
-	$(OBJ_FOLDER)/alien/initAlien.o \
-	$(OBJ_FOLDER)/alien/drawAlien.o \
-	$(OBJ_FOLDER)/alien/updateAlien.o \
-	$(OBJ_FOLDER)/alien/colisaoAlienSolo.o \
-	\
-	$(OBJ_FOLDER)/tank/initTank.o \
-	$(OBJ_FOLDER)/tank/drawTank.o \
-	$(OBJ_FOLDER)/tank/updateTank.o
+# dependencies= \
+# 	$(OBJ_FOLDER)/main.o \
+# 	\
+# 	$(OBJ_FOLDER)/allegro/initAllegro.o \
+# 	$(OBJ_FOLDER)/allegro/initDisplay.o \
+# 	$(OBJ_FOLDER)/allegro/initEventQueue.o \
+# 	$(OBJ_FOLDER)/allegro/initKeyboard.o \
+# 	$(OBJ_FOLDER)/allegro/initTime.o \
+# 	$(OBJ_FOLDER)/allegro/initAddon.o \
+# 	$(OBJ_FOLDER)/allegro/initPrimitivesAddon.o \
+# 	$(OBJ_FOLDER)/allegro/loadFonts.o \
+# 	$(OBJ_FOLDER)/allegro/registerEvents.o \
+# 	$(OBJ_FOLDER)/allegro/destroyElements.o \
+# 	\
+# 	$(OBJ_FOLDER)/events/eventDispatch.o \
+# 	$(OBJ_FOLDER)/events/keyDownEvent.o \
+# 	$(OBJ_FOLDER)/events/keyUpEvent.o \
+# 	$(OBJ_FOLDER)/events/mouseEvent.o \
+# 	$(OBJ_FOLDER)/events/timeEvent.o \
+# 	$(OBJ_FOLDER)/events/spentASecond.o \
+# 	\
+# 	$(OBJ_FOLDER)/scenery/drawScenery.o \
+# 	\
+# 	$(OBJ_FOLDER)/grass/drawGrass.o \
+# 	\
+# 	$(OBJ_FOLDER)/ship/initShip.o \
+# 	$(OBJ_FOLDER)/ship/drawShip.o \
+# 	$(OBJ_FOLDER)/ship/updateShip.o \
+# 	\
+# 	$(OBJ_FOLDER)/alien/initAlien.o \
+# 	$(OBJ_FOLDER)/alien/drawAlien.o \
+# 	$(OBJ_FOLDER)/alien/updateAlien.o \
+# 	$(OBJ_FOLDER)/alien/colisaoAlienSolo.o \
+# 	\
+# 	$(OBJ_FOLDER)/tank/initTank.o \
+# 	$(OBJ_FOLDER)/tank/drawTank.o \
+# 	$(OBJ_FOLDER)/tank/updateTank.o
 
 # all: $(PROJECT)
-sdfds
-sdfdssda
 
 # $(PROJECT): $(O_FILES)
 # $(COMPILE) -o $@ $^
