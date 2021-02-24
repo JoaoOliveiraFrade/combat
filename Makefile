@@ -74,6 +74,8 @@ dependencies= \
 	$(OBJ_FOLDER)/tank/updateTank.o
 
 # all: $(PROJECT)
+sdfds
+sdfdssda
 
 # $(PROJECT): $(O_FILES)
 # $(COMPILE) -o $@ $^
