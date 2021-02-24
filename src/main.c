@@ -25,9 +25,9 @@ int main() {
 	
 	al_start_timer(timer);
 	// loadFonts(size_32);
-
+	
+	Tank tank;
 	Ship ship;
-	Tank tank; 
 	Alien alien;
 
 	initTank(&tank);
@@ -40,18 +40,18 @@ int main() {
 		eventDispatch(timer, &ev, &playing, &ship, &tank);
 
 		drawScenery();
+
 		drawTank(&tank);
-		// updateTank(&tank);
+		// drawAlien(&alien);
+		// drawShip(&ship);
 
-		drawAlien(&alien);
-		drawShip(&ship);
-		
-		updateShip(&ship);
-		updateAlien(&alien);
+		updateTank(&tank);
+		// updateShip(&ship);
+		// updateAlien(&alien);
 
-		if (colisaoAlienSolo(&alien)) {
-			break;
-		}
+		// if (colisaoAlienSolo(&alien)) {
+		// 	break;
+		// }
 	}
 
 	// al_rest(2);

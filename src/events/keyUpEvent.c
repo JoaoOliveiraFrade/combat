@@ -8,19 +8,27 @@ void keyUpEvent (ALLEGRO_EVENT* ev, Ship* ship, Tank* tank) {
 
 		switch (ev->keyboard.keycode) {
 			case ALLEGRO_KEY_LEFT:
-				ship->esq = 0;
+				ship->left = 0;
 			break;
 			
 			case ALLEGRO_KEY_RIGHT:
-				ship->dir = 0;
+				ship->right = 0;
 			break;
 
 			case ALLEGRO_KEY_W:
-				tank->vel += VEL_TANK;
+				tank->speed += TANK_SPEED;
 			break;
 			
 			case ALLEGRO_KEY_S:
-				tank->vel -= VEL_TANK;
+				tank->speed -= TANK_SPEED;
+			break;
+
+			case ALLEGRO_KEY_D:
+				tank->angularSpeed -= tank->constAngularSpeed;
+			break;
+			
+			case ALLEGRO_KEY_A:
+				tank->angularSpeed += tank->constAngularSpeed;
 			break;
 		}
 

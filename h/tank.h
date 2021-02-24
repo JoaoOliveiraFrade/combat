@@ -2,11 +2,11 @@
 #include <allegro5/allegro_primitives.h>
 #include <math.h>
 
-#define RAIO 50
-#define VEL_TANK 2.5
+#define RADIUS 50
+#define TANK_SPEED 2.5
 
-#ifndef PONTO
-  #define PONTO
+#ifndef POINT
+  #define POINT
 
   typedef struct Point {  
     float x;
@@ -18,8 +18,13 @@
   #define TANQUE
 
   typedef struct Tank {
+    float angle;
+    float angularSpeed;
+    float constAngularSpeed;
     float alpha;
-    float vel;
+    float speed;
+    float up, down;
+    float xComp, yComp;
     Point center;
     Point A;
     Point B;

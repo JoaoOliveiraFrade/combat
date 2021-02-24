@@ -2,17 +2,17 @@
 #include "../../h/ship.h"
 
 bool onRightLimit (Ship* ship) {
-  return (ship->x + ship->vel) <= SCREEN_W;
+  return (ship->x + ship->speed) <= SCREEN_W;
 }
 bool onLeftLimit (Ship* ship) {
-  return (ship->x - ship->vel) >= 0;
+  return (ship->x - ship->speed) >= 0;
 }
 
 void updateShip (Ship* ship) {
-  if (ship->esq && onLeftLimit(ship)) {
-    ship->x -= ship->vel;
+  if (ship->left && onLeftLimit(ship)) {
+    ship->x -= ship->speed;
   }
-  if (ship->dir && onRightLimit(ship)) {
-    ship->x += ship->vel;
+  if (ship->right && onRightLimit(ship)) {
+    ship->x += ship->speed;
   }
 }

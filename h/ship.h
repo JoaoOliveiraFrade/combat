@@ -8,8 +8,8 @@
 
   typedef struct Ship {
     float x;
-    float vel;
-    int esq, dir;
+    float speed;
+    int left, right;
     ALLEGRO_COLOR color;
   } Ship;
 #endif
