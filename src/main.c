@@ -49,7 +49,9 @@ int main() {
 		updateShip(&ship);
 		updateAlien(&alien);
 
-		playing = !colisaoAlienSolo(&alien);
+		if (colisaoAlienSolo(&alien)) {
+			break;
+		}
 	}
 
 	// al_rest(2);

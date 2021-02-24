@@ -1,7 +1,7 @@
+PROJECT = combat
 COMPILE = gcc
 COMPILE_FLAGS = -lm -std=c11 -pedantic -W -Wall #-ansi  
-xxxxxx
-SRC_FOLDER = obj
+SRC_FOLDER = src
 BIN_FOLDER = bin
 OBJ_FOLDER = $(BIN_FOLDER)/obj
 LIB_FOLDER = $(BIN_FOLDER)/lib
@@ -15,25 +15,6 @@ O2_FILES = $(C_FILES:obj=obj)
 
 ALLEGRO_LIB = D:/allegro/lib/liballegro-5.0.10-monolith-mt.a
 ALLEGRO_INCLUDE = D:/allegro/include
-
-OBJECT_FILES=$(addprefix $(OBJ_FOLDER)/, $(C_FILES:.c=.o))
-
-build: create_directories create_executable
-	@echo "Build completo!"
-
-create_executable: create_objects
-	@$(COMPILE) $(COMPILE_FLAGS) $(OBJECT_FILES) -o $(BIN_FOLDER)/$(PROJECT)
-	@echo "Executavel criado."
-
-create_objects: $(C_FILES)
-	@echo "objetos criados."
-
-create_directories: 
-	@mkdir -p $(OBJ_FOLDER)
-
-%.c:
-	@echo "Compiling "$@
-	@$(COMPILE) $(COMPILE_FLAGS) -c $(SRC_FOLDER)/$@ -o $(OBJ_FOLDER)/$(patsubst %.c,%.o,$@)
 
 dependencies= \
 	$(OBJ_FOLDER)/main.o \
@@ -73,35 +54,23 @@ dependencies= \
 	$(OBJ_FOLDER)/tank/drawTank.o \
 	$(OBJ_FOLDER)/tank/updateTank.o
 
-# all: $(PROJECT)
-sdfds
-sdfdssda
+all: $(PROJECT)
 
-# $(PROJECT): $(O_FILES)
-# $(COMPILE) -o $@ $^
+$(PROJECT): $(dependencies)
+	$(COMPILE) \
+		$(OBJ_FOLDER)/*.o \
+		$(OBJ_FOLDER)/allegro/*.o \
+		$(OBJ_FOLDER)/events/*.o \
+		$(OBJ_FOLDER)/grass/*.o \
+		$(OBJ_FOLDER)/scenery/*.o \
+		$(OBJ_FOLDER)/ship/*.o \
+		$(OBJ_FOLDER)/alien/*.o \
+		$(OBJ_FOLDER)/tank/*.o \
+		$(ALLEGRO_LIB) \
+		-o $(BIN_FOLDER)/$(PROJECT)
 
-# $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
-# 	$(COMPILE) $(COMPILE_FLAGS) -c $< -I $(ALLEGRO_INCLUDE) -o $@
-
-# main.o: main.c $(H_FILES)
-# 	$(COMPILE) $(COMPILE_FLAGS) $< $(ALLEGRO_LIB) -o $@
-
-
-# $(PROJECT): $(dependencies)
-# 	$(COMPILE) \
-# 		$(OBJ_FOLDER)/*.o \
-# 		$(OBJ_FOLDER)/allegro/*.o \
-# 		$(OBJ_FOLDER)/events/*.o \
-# 		$(OBJ_FOLDER)/grass/*.o \
-# 		$(OBJ_FOLDER)/scenery/*.o \
-# 		$(OBJ_FOLDER)/ship/*.o \
-# 		$(OBJ_FOLDER)/alien/*.o \
-# 		$(OBJ_FOLDER)/tank/*.o \
-# 		$(ALLEGRO_LIB) \
-# 		-o $(BIN_FOLDER)/$(PROJECT)
-
-# $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c 
-# 	$(COMPILE) $(COMPILE_FLAGS) -c $< -I $(ALLEGRO_INCLUDE) -o $@
+$(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c 
+	$(COMPILE) $(COMPILE_FLAGS) -c $< -I $(ALLEGRO_INCLUDE) -o $@
 
 run:
 	clear
