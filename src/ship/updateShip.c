@@ -1,18 +1,18 @@
 #include "../../h/combat.h"
 #include "../../h/ship.h"
 
-bool onRightLimit (Ship* ship) {
+bool shipOnRightLimit (Ship* ship) {
   return (ship->x + ship->speed) <= SCREEN_W;
 }
-bool onLeftLimit (Ship* ship) {
+bool shipOnLeftLimit (Ship* ship) {
   return (ship->x - ship->speed) >= 0;
 }
 
 void updateShip (Ship* ship) {
-  if (ship->left && onLeftLimit(ship)) {
+  if (ship->left && shipOnLeftLimit(ship)) {
     ship->x -= ship->speed;
   }
-  if (ship->right && onRightLimit(ship)) {
+  if (ship->right && shipOnRightLimit(ship)) {
     ship->x += ship->speed;
   }
 }

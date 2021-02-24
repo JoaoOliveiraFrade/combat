@@ -4,6 +4,7 @@
 
 #define RADIUS 50
 #define TANK_SPEED 2.5
+#define CIRCLE_THICKNESS 1.5
 
 #ifndef POINT
   #define POINT
@@ -25,10 +26,10 @@
     float speed;
     float up, down;
     float xComp, yComp;
-    Point center;
-    Point A;
-    Point B;
-    Point C;
+    Point pCenter;
+    Point pA;
+    Point pB;
+    Point pC;
     ALLEGRO_COLOR color;
   } Tank;
 #endif

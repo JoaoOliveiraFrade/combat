@@ -22,20 +22,20 @@ void initTank (Tank* tank) {
   float h = RADIUS * sin(tank->alpha);
 
   // init center
-  tank->center.x = SCREEN_W / 4;
-  tank->center.y = SCREEN_H / 2;
+  tank->pCenter.x = SCREEN_W / 4;
+  tank->pCenter.y = SCREEN_H / 2;
 
   // init points triangle
-  tank->A.x = 0.0;
-  tank->A.y = -RADIUS;
+  tank->pA.x = 0.0;
+  tank->pA.y = -RADIUS;
 
-  tank->B.x = -w;
-  tank->B.y = h;
+  tank->pB.x = -w;
+  tank->pB.y = h;
 
-  tank->C.x = w;
-  tank->C.y = h;
+  tank->pC.x = w;
+  tank->pC.y = h;
 
   // init color
   srand(time(NULL));
-  tank->color = al_map_rgb(rand()%255, rand()%255 , rand()%255);
+  tank->color = al_map_rgb(240, 40 , 150);
 }
