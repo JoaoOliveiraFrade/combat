@@ -1,16 +1,17 @@
 #include "../../h/tank.h"
 #include "../../h/combat.h"
+#include "../../h/block.h"
 
-bool tankOnUpLimit (Tank* tank) {
-  return (tank->pCenter.y - RADIUS + (tank->speed * tank->yComp) - CIRCLE_THICKNESS) > 0;
+bool tankOnTopLimit (Tank* tank) {
+  return (tank->pCenter.y - RADIUS + (tank->speed * tank->yComp) - CIRCLE_THICKNESS) >= 0;
 }
 
-bool tankOnDownLimit (Tank* tank) {
+bool tankOnBottomLimit (Tank* tank) {
   return (tank->pCenter.y + RADIUS + (tank->speed * tank->yComp) + CIRCLE_THICKNESS) <= SCREEN_H;
 }
 
 bool tankOnRightLimit (Tank* tank) {
-  return (tank->pCenter.x + RADIUS + + (tank->speed * tank->xComp) + CIRCLE_THICKNESS) <= SCREEN_W;
+  return (tank->pCenter.x + RADIUS + (tank->speed * tank->xComp) + CIRCLE_THICKNESS) <= SCREEN_W;
 }
 
 bool tankOnLeftLimit (Tank* tank) {
@@ -18,7 +19,7 @@ bool tankOnLeftLimit (Tank* tank) {
 }
 
 bool tankOnLimit (Tank* tank) {
-  return (tankOnUpLimit(tank) && tankOnDownLimit(tank) && tankOnRightLimit(tank) && tankOnLeftLimit(tank));
+  return (tankOnTopLimit(tank) && tankOnBottomLimit(tank) && tankOnRightLimit(tank) && tankOnLeftLimit(tank));
 }
 
 void rotate (Point* P, float angle) {
@@ -34,7 +35,7 @@ void rotatesTank (Tank* tank) {
   tank->yComp = sin(tank->angle);
 }
 
-void updateTank (Tank* tank) {
+void updateTank (Tank* tank, Block* obstacle) {
  
   rotate(&tank->pA, tank->angularSpeed);
   rotate(&tank->pB, tank->angularSpeed);
@@ -42,7 +43,7 @@ void updateTank (Tank* tank) {
 
   rotatesTank(tank);
   
-  if (tankOnLimit(tank)) { 
+  if (tankOnLimit(tank) && !collisionBlocksAndTank(obstacle, tank)) { 
     tank->pCenter.x += (tank->speed * tank->xComp);
     tank->pCenter.y += (tank->speed * tank->yComp);
   }

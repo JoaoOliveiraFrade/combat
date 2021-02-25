@@ -1,19 +1,11 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <math.h>
+#include "block.h"
 
-#define RADIUS 50
+#define RADIUS 25
 #define TANK_SPEED 2.5
 #define CIRCLE_THICKNESS 1.5
-
-#ifndef POINT
-  #define POINT
-
-  typedef struct Point {  
-    float x;
-    float y;
-  } Point;
-#endif
 
 #ifndef TANQUE
   #define TANQUE
@@ -24,7 +16,6 @@
     float constAngularSpeed;
     float alpha;
     float speed;
-    float up, down;
     float xComp, yComp;
     Point pCenter;
     Point pA;
@@ -36,4 +27,5 @@
 
 void initTank (Tank* tank);
 void drawTank (Tank* tank);
-void updateTank (Tank* tank);
+void updateTank (Tank* tank, Block* obstacle);
+bool collisionBlocksAndTank (Block* obstacle, Tank* tank);

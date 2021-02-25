@@ -13,8 +13,8 @@ O2_FILES = $(C_FILES:obj=obj)
 # echo H_FILES
 # echo O_FILES
 
-ALLEGRO_LIB = D:/allegro/lib/liballegro-5.0.10-monolith-mt.a
-ALLEGRO_INCLUDE = D:/allegro/include
+ALLEGRO_LIB = C:/dados/allegro/lib/liballegro-5.0.10-monolith-mt.a
+ALLEGRO_INCLUDE = C:/dados/allegro/include
 
 dependencies= \
 	$(OBJ_FOLDER)/main.o \
@@ -52,7 +52,13 @@ dependencies= \
 	\
 	$(OBJ_FOLDER)/tank/initTank.o \
 	$(OBJ_FOLDER)/tank/drawTank.o \
-	$(OBJ_FOLDER)/tank/updateTank.o
+	$(OBJ_FOLDER)/tank/updateTank.o \
+	\
+	$(OBJ_FOLDER)/block/initBlock.o \
+	$(OBJ_FOLDER)/block/drawBlock.o \
+	$(OBJ_FOLDER)/block/collisionBlocksAndTank.o 
+	
+	
 
 all: $(PROJECT)
 
@@ -66,6 +72,7 @@ $(PROJECT): $(dependencies)
 		$(OBJ_FOLDER)/ship/*.o \
 		$(OBJ_FOLDER)/alien/*.o \
 		$(OBJ_FOLDER)/tank/*.o \
+		$(OBJ_FOLDER)/block/*.o \
 		$(ALLEGRO_LIB) \
 		-o $(BIN_FOLDER)/$(PROJECT)
 
@@ -89,6 +96,7 @@ clean:
 	@rm -rvf $(OBJ_FOLDER)/ship/*.o
 	@rm -rvf $(OBJ_FOLDER)/alien/*.o
 	@rm -rvf $(OBJ_FOLDER)/tank/*.o
+	@rm -rvf $(OBJ_FOLDER)/block/*.o
 	@rm -rvf $(LIB_FOLDER)/*.a
 	@rm -rvf $(BIN_FOLDER)/*.exe
 

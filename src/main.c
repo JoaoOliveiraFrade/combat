@@ -3,9 +3,10 @@
 #include "../h/ship.h"
 #include "../h/alien.h"
 #include "../h/tank.h"
+#include "../h/block.h"
 
 // int main(int argc, char **argv) {
-int main() {
+int main () {
 	ALLEGRO_DISPLAY* display = NULL;
 	ALLEGRO_TIMER* timer = NULL;
 	ALLEGRO_EVENT_QUEUE* event_queue = NULL;
@@ -27,10 +28,12 @@ int main() {
 	// loadFonts(size_32);
 	
 	Tank tank;
+	Block obstacle;
 	Ship ship;
 	Alien alien;
 
 	initTank(&tank);
+	initBlock(&obstacle);
 	initShip(&ship);
 	initAlien(&alien);
 
@@ -42,10 +45,11 @@ int main() {
 		drawScenery();
 
 		drawTank(&tank);
+		drawBlock(&obstacle);
 		// drawAlien(&alien);
 		// drawShip(&ship);
 
-		updateTank(&tank);
+		updateTank(&tank, &obstacle);
 		// updateShip(&ship);
 		// updateAlien(&alien);
 
