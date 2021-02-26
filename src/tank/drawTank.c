@@ -1,12 +1,12 @@
 #include "../../h/tank.h"
 #include "../../h/combat.h"
 
-void drawTank (Tank* tank) {
-  al_draw_circle(tank->center.x, tank->center.y, RAIO, tank->color, 1.5);
+void drawTank (Tank tank) {
+  al_draw_circle(tank.pCenter.x, tank.pCenter.y, TANK_RADIUS, tank.color, CIRCLE_THICKNESS);
 
  	al_draw_filled_triangle(
-    tank->center.x + tank->A.x, tank->center.y + tank->A.y,
-    tank->center.x + tank->B.x, tank->center.y + tank->B.y,
-    tank->center.x + tank->C.x, tank->center.y + tank->C.y,
-    tank->color);  
+    tank.pCenter.x + tank.pA.x, tank.pCenter.y + tank.pA.y,
+    tank.pCenter.x + tank.pB.x, tank.pCenter.y + tank.pB.y,
+    tank.pCenter.x + tank.pC.x, tank.pCenter.y + tank.pC.y,
+    tank.color);  
 }

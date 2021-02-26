@@ -9,7 +9,7 @@
 
   typedef struct Alien {
     float x, y;
-    float xVel, yVel;
+    float xSpeed, ySpeed;
     ALLEGRO_COLOR color;
   } Alien;
 #endif

@@ -9,8 +9,8 @@
 #include "tank.h"
 
 /* 960 540 */
-#define SCREEN_W 960
-#define SCREEN_H 540
+#define SCREEN_W 1000
+#define SCREEN_H 570
 #define MAX_COLOR 256
 #define FPS 256
 
@@ -32,7 +32,7 @@ void registerEvents (ALLEGRO_EVENT_QUEUE* event_queue,
 
 bool spentASecond (ALLEGRO_TIMER* timer);
 
-void timeEvent (ALLEGRO_TIMER* timer);
+void timeEvent (ALLEGRO_TIMER* timer, Block* block, Tank* tank);
 
 void mouseEvent (ALLEGRO_EVENT* ev);
 
@@ -44,12 +44,13 @@ void eventDispatch (
 			ALLEGRO_EVENT* ev,
 			int* playing,
 			Ship* ship,
+			Block* block,
 			Tank* tank);
 
 void destroyElements (
 	ALLEGRO_DISPLAY* display,
  	ALLEGRO_TIMER* timer,
-  ALLEGRO_EVENT_QUEUE* event_queue);
+	ALLEGRO_EVENT_QUEUE* event_queue);
 
 void drawScenery ();
 

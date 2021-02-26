@@ -2,27 +2,40 @@
 #include "../../h/combat.h"
 
 void initTank (Tank* tank) {
+  // init internal angle
   double pi = atan(1)*4;
   tank->alpha = (pi/3);
-
-  tank->vel = 0;
-  
   float theta = pi/2 - tank->alpha;
 
-  float w = RAIO * sin(theta);
-  float h = RAIO * sin(tank->alpha);
+  // init speed
+  tank->speed = 0;
+  tank->constAngularSpeed = pi/90;
+  tank->angularSpeed = 0;
 
-  tank->center.x = SCREEN_W / 4;
-  tank->center.y = SCREEN_H / 2;
+  // init components
+  tank->angle = pi/2;
+  tank->xComp = cos(tank->angle);
+  tank->yComp = sin(tank->angle);
 
-  tank->A.x = 0.0;
-  tank->A.y = -RAIO;
+  // init triangle base(2w) and high of base to center(h)
+  float w = TANK_RADIUS * sin(theta);
+  float h = TANK_RADIUS * sin(tank->alpha);
 
-  tank->B.x = -w;
-  tank->B.y = h;
+  // init center
+  tank->pCenter.x = SCREEN_W / 4;
+  tank->pCenter.y = SCREEN_H / 7;
 
-  tank->C.x = w;
-  tank->C.y = h;
+  // init points triangle
+  tank->pA.x = 0.0;
+  tank->pA.y = -TANK_RADIUS;
 
-  tank->color = al_map_rgb(150, 150 , 50);
+  tank->pB.x = -w;
+  tank->pB.y = h;
+
+  tank->pC.x = w;
+  tank->pC.y = h;
+
+  // init color
+  srand(time(NULL));
+  tank->color = al_map_rgb(240, 40 , 150);
 }

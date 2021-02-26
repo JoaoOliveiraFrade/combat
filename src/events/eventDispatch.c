@@ -7,11 +7,12 @@ void eventDispatch (
 			ALLEGRO_EVENT* ev,
 			int* playing,
 			Ship* ship,
+			Block* block,
 			Tank* tank) {
 
 	switch (ev->type) {
 		case ALLEGRO_EVENT_TIMER:
-			timeEvent(timer);
+			timeEvent(timer, block, tank);
 		break;
 
 		case ALLEGRO_EVENT_DISPLAY_CLOSE:
