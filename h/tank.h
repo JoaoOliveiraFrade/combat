@@ -26,6 +26,6 @@
 #endif
 
 void initTank (Tank* tank);
-void drawTank (Tank* tank);
-void updateTank (Tank* tank, Block* obstacle);
-bool collisionBlocksAndTank (Block* obstacle, Tank* tank);
+void drawTank (Tank tank);
+void updateTank (Tank* tank, Block* block);
+bool collisionBlocksAndTank (Block* block, Tank* tank);

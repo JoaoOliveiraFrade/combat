@@ -23,7 +23,7 @@ void initTank (Tank* tank) {
 
   // init center
   tank->pCenter.x = SCREEN_W / 4;
-  tank->pCenter.y = SCREEN_H / 2;
+  tank->pCenter.y = SCREEN_H / 7;
 
   // init points triangle
   tank->pA.x = 0.0;

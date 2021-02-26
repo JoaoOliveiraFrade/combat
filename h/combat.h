@@ -9,8 +9,8 @@
 #include "tank.h"
 
 /* 960 540 */
-#define SCREEN_W 1200
-#define SCREEN_H 750
+#define SCREEN_W 1000
+#define SCREEN_H 570
 #define MAX_COLOR 256
 #define FPS 256
 

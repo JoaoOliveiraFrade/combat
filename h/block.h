@@ -11,14 +11,14 @@
 #endif
 
 #ifndef BLOCK
-#define BLOCK
+  #define BLOCK
 
-    typedef struct Block {
-        Point pTopLeft;
-        Point pBottomRight;
-        ALLEGRO_COLOR color;
-    } Block;
+  typedef struct Block {
+    Point pA;
+    Point pB;
+    ALLEGRO_COLOR color;
+  } Block;
 #endif
 
-void drawBlock (Block* obstacle);
-void initBlock (Block* obstacle);
+void drawBlock (Block block);
+void initBlock (Block* block);

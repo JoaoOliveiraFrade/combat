@@ -1,47 +1,76 @@
 #include "../../h/block.h"
 #include "../../h/tank.h"
+#include <stdio.h>
+
+// bool tankInBlockIntervalY (Block* block, Tank* tank) {
+//     return (block->pA.y >= (tank->pCenter.y - RADIUS + (tank->speed * tank->yComp) - CIRCLE_THICKNESS)) 
+//     && (block->pB.y <= (tank->pCenter.y + RADIUS + (tank->speed * tank->yComp) + CIRCLE_THICKNESS));
+// }
 
 
-bool tankInBlockIntervalY (Block* obstacle, Tank* tank) {
-    return (obstacle->pTopLeft.y <= (tank->pCenter.y - RADIUS + (tank->speed * tank->yComp) - CIRCLE_THICKNESS)) 
-    && (obstacle->pBottomRight.y >= (tank->pCenter.y + RADIUS + (tank->speed * tank->yComp) + CIRCLE_THICKNESS));
-}
-bool tankInBlockIntervalX (Block* obstacle, Tank* tank) {
-    return (obstacle->pTopLeft.x <= (tank->pCenter.x - RADIUS + (tank->speed * tank->xComp) - CIRCLE_THICKNESS)) 
-    && (obstacle->pBottomRight.x >= (tank->pCenter.x + RADIUS + (tank->speed * tank->xComp) + CIRCLE_THICKNESS));
-}
-
-bool tankInBlock (Block* obstacle, Tank* tank) {
-    return tankInBlockIntervalY(obstacle, tank) && tankInBlockIntervalX(obstacle, tank);
-}
+// bool tankInBlockIntervalX (Block* block, Tank* tank) {
+//     return (block->pB.x >= (tank->pCenter.x - RADIUS + (tank->speed * tank->xComp) - CIRCLE_THICKNESS)) 
+//     && (block->pA.x <= (tank->pCenter.x + RADIUS + (tank->speed * tank->xComp) + CIRCLE_THICKNESS));
+// }
 
 
-// bool topCollision (Block* obstacle, Tank* tank) {
+// bool tankInBlock (Block* block, Tank* tank) {
+//     return tankInBlockIntervalY(block, tank) && tankInBlockIntervalX(block, tank);
+// }
+
+// bool topCollision (Block* block, Tank* tank) {
 //     return (tank->pCenter.y + RADIUS + (tank->speed * tank->yComp) + CIRCLE_THICKNESS)
-//             >= obstacle->pTopLeft.y
-//             && tankInBlockIntervalX(obstacle, tank);
+//             <= block->pA.y ; 
+//             // && tankInBlockIntervalX(block, tank);
 // }
 
-// bool bottomCollision (Block* obstacle, Tank* tank) {
+// bool bottomCollision (Block* block, Tank* tank) {
 //     return  (tank->pCenter.y - RADIUS + (tank->speed * tank->yComp) - CIRCLE_THICKNESS)
-//             <= obstacle->pBottomRight.y
-//             && tankInBlockIntervalX(obstacle, tank);
+//             <= block->pB.y;
+//             // && tankInBlockIntervalX(block, tank);
 // }
 
-// bool rightCollision (Block* obstacle, Tank* tank) {
+// bool rightCollision (Block* block, Tank* tank) {
 //     return (tank->pCenter.x - RADIUS + (tank->speed * tank->xComp) - CIRCLE_THICKNESS)
-//             < obstacle->pBottomRight.x
-//             && tankInBlockIntervalY(obstacle, tank);
+//             <= block->pB.x;
+// //             && tankInBlockIntervalY(block, tank);
 // }
 
-// bool leftCollision (Block* obstacle, Tank* tank) {
+// bool leftCollision (Block* block, Tank* tank) {
 //     return  (tank->pCenter.x + RADIUS + (tank->speed * tank->xComp) + CIRCLE_THICKNESS) 
-//             > obstacle->pTopLeft.x
-//             && tankInBlockIntervalY(obstacle, tank);
+//             >= block->pA.x;
+//             // && tankInBlockIntervalY(block, tank);
 // }
 
-bool collisionBlocksAndTank (Block* obstacle, Tank* tank) {
-    // return (leftCollision(obstacle, tank) || leftCollision(obstacle, tank) ||
-    //         leftCollision(obstacle, tank) || leftCollision(obstacle, tank));
-    return tankInBlock(obstacle, tank);
+bool tankInBlockIntervalY (Block* block, Tank* tank) {
+    return (block->pB.y >= (tank->pCenter.y - RADIUS + (tank->speed * tank->yComp) - CIRCLE_THICKNESS)) 
+    && (block->pA.y <= (tank->pCenter.y + RADIUS + (tank->speed * tank->yComp) + CIRCLE_THICKNESS));
+}
+
+
+bool tankInBlockIntervalX (Block* block, Tank* tank) {
+    return (block->pB.x <= (tank->pCenter.x - RADIUS + (tank->speed * tank->xComp) - CIRCLE_THICKNESS)) 
+    && (block->pA.x >= (tank->pCenter.x + RADIUS + (tank->speed * tank->xComp) + CIRCLE_THICKNESS));
+}
+
+
+bool tankInBlock (Block* block, Tank* tank) {
+    return tankInBlockIntervalY(block, tank) && tankInBlockIntervalX(block, tank);
+}
+
+bool collisionBlocksAndTank (Block* block, Tank* tank) {
+    // return (leftCollision(block, tank) && bottomCollision(block, tank) &&
+    //         rightCollision(block, tank) && topCollision(block, tank));
+    if (tankInBlock(block, tank)) {
+        printf("no intervalo\n");
+    }
+    if (tankInBlockIntervalY(block, tank)) {
+        printf("no intervalo y\n");
+    }
+    if (tankInBlockIntervalX(block, tank)) {
+        printf("no intervalo x\n");
+    }
+   
+    return tankInBlock(block, tank);
+
 }

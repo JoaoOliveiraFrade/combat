@@ -28,12 +28,12 @@ int main () {
 	// loadFonts(size_32);
 	
 	Tank tank;
-	Block obstacle;
+	Block block;
 	Ship ship;
 	Alien alien;
 
 	initTank(&tank);
-	initBlock(&obstacle);
+	initBlock(&block);
 	initShip(&ship);
 	initAlien(&alien);
 
@@ -44,12 +44,12 @@ int main () {
 
 		drawScenery();
 
-		drawTank(&tank);
-		drawBlock(&obstacle);
+		drawTank(tank);
+		drawBlock(block);
 		// drawAlien(&alien);
 		// drawShip(&ship);
 
-		updateTank(&tank, &obstacle);
+		updateTank(&tank, &block);
 		// updateShip(&ship);
 		// updateAlien(&alien);
 

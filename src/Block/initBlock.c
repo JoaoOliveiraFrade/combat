@@ -1,13 +1,13 @@
 #include "../../h/combat.h"
 #include "../../h/block.h"
 
-void initBlock (Block* obstacle) {
+void initBlock (Block* block) {
 
-    obstacle->pTopLeft.x = SCREEN_W/2;
-    obstacle->pTopLeft.y = SCREEN_H/4;
+    block->pA.x = SCREEN_W / 2;
+    block->pA.y = SCREEN_H / 2;
 
-    obstacle->pBottomRight.x = SCREEN_W/3;
-    obstacle->pBottomRight.y = SCREEN_H/3;
+    block->pB.x = SCREEN_W / 3;
+    block->pB.y = SCREEN_H / 3;
 
-    obstacle->color = al_map_rgb(0,0,0);
+    block->color = al_map_rgb(0,0,0);
 }

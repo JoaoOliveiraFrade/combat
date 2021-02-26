@@ -35,7 +35,7 @@ void rotatesTank (Tank* tank) {
   tank->yComp = sin(tank->angle);
 }
 
-void updateTank (Tank* tank, Block* obstacle) {
+void updateTank (Tank* tank, Block* block) {
  
   rotate(&tank->pA, tank->angularSpeed);
   rotate(&tank->pB, tank->angularSpeed);
@@ -43,7 +43,7 @@ void updateTank (Tank* tank, Block* obstacle) {
 
   rotatesTank(tank);
   
-  if (tankOnLimit(tank) && !collisionBlocksAndTank(obstacle, tank)) { 
+  if (tankOnLimit(tank) && !collisionBlocksAndTank(block, tank)) { 
     tank->pCenter.x += (tank->speed * tank->xComp);
     tank->pCenter.y += (tank->speed * tank->yComp);
   }

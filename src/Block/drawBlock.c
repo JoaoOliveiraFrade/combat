@@ -1,11 +1,11 @@
 #include "../../h/block.h"
 
-void drawBlock (Block* obstacle) {
+void drawBlock (Block block) {
 
 	al_draw_filled_rectangle(
-    obstacle->pTopLeft.x, obstacle->pTopLeft.y,
-    obstacle->pBottomRight.x, obstacle->pBottomRight.y,
-    obstacle->color
+    block.pA.x, block.pA.y,
+    block.pB.x, block.pB.y,
+    block.color
     );
 
 }
