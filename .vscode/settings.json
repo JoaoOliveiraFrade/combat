@@ -1,9 +1,0 @@
-{
-    "C_Cpp.errorSquiggles": "Disabled",
-    "files.associations": {
-        "combat.h": "c",
-        "ctype.h": "c",
-        "block.h": "c",
-        "tank.h": "c"
-    }
-}

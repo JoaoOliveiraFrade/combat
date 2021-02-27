@@ -1,110 +1,40 @@
 PROJECT = combat
+
 COMPILE = gcc
 COMPILE_FLAGS = -lm -std=c11 -pedantic -W -Wall #-ansi  
-SRC_FOLDER = src
-BIN_FOLDER = bin
-OBJ_FOLDER = $(BIN_FOLDER)/obj
-LIB_FOLDER = $(BIN_FOLDER)/lib
 
-C_FILES = $(shell find . -name "*.c")
-H_FILES = $(shell find . -name "*.h")
-O_FILES = $(C_FILES:.c=.o)
-O2_FILES = $(C_FILES:obj=obj)
-# echo H_FILES
-# echo O_FILES
+DIR_H = h
+DIR_C = src
+DIR_BIN = bin
+DIR_O = $(DIR_BIN)/o
+DIR_LIB = $(DIR_BIN)/lib
+
+FILES_H = $(shell find . -name "*.h")
+FILES_C = $(shell find . -name "*.c")
+FILES_X = $(shell find . -name "*.o")
+FILES_O = $(FILES_C:./$(DIR_C)/%.c=./$(DIR_O)/%.o)
 
 ALLEGRO_LIB = C:/dados/allegro/lib/liballegro-5.0.10-monolith-mt.a
 ALLEGRO_INCLUDE = C:/dados/allegro/include
 
-dependencies= \
-	$(OBJ_FOLDER)/main.o \
-	\
-	$(OBJ_FOLDER)/allegro/initAllegro.o \
-	$(OBJ_FOLDER)/allegro/initDisplay.o \
-	$(OBJ_FOLDER)/allegro/initEventQueue.o \
-	$(OBJ_FOLDER)/allegro/initKeyboard.o \
-	$(OBJ_FOLDER)/allegro/initTime.o \
-	$(OBJ_FOLDER)/allegro/initAddon.o \
-	$(OBJ_FOLDER)/allegro/initPrimitivesAddon.o \
-	$(OBJ_FOLDER)/allegro/loadFonts.o \
-	$(OBJ_FOLDER)/allegro/registerEvents.o \
-	$(OBJ_FOLDER)/allegro/destroyElements.o \
-	\
-	$(OBJ_FOLDER)/events/eventDispatch.o \
-	$(OBJ_FOLDER)/events/keyDownEvent.o \
-	$(OBJ_FOLDER)/events/keyUpEvent.o \
-	$(OBJ_FOLDER)/events/mouseEvent.o \
-	$(OBJ_FOLDER)/events/timeEvent.o \
-	$(OBJ_FOLDER)/events/spentASecond.o \
-	\
-	$(OBJ_FOLDER)/scenery/drawScenery.o \
-	\
-	$(OBJ_FOLDER)/grass/drawGrass.o \
-	\
-	$(OBJ_FOLDER)/ship/initShip.o \
-	$(OBJ_FOLDER)/ship/drawShip.o \
-	$(OBJ_FOLDER)/ship/updateShip.o \
-	\
-	$(OBJ_FOLDER)/alien/initAlien.o \
-	$(OBJ_FOLDER)/alien/drawAlien.o \
-	$(OBJ_FOLDER)/alien/updateAlien.o \
-	$(OBJ_FOLDER)/alien/colisaoAlienSolo.o \
-	\
-	$(OBJ_FOLDER)/tank/initTank.o \
-	$(OBJ_FOLDER)/tank/drawTank.o \
-	$(OBJ_FOLDER)/tank/updateTank.o \
-	$(OBJ_FOLDER)/tank/collisionBlocksAndTank.o \
-	$(OBJ_FOLDER)/tank/checkTankOnDisplayLimit.o \
-	$(OBJ_FOLDER)/tank/rotatesTank.o \
-	\
-	$(OBJ_FOLDER)/block/initBlock.o \
-	$(OBJ_FOLDER)/block/drawBlock.o \
-	\
-	$(OBJ_FOLDER)/shot/initShot.o \
-	$(OBJ_FOLDER)/shot/drawShot.o 
-	
-	
 all: $(PROJECT)
 
-$(PROJECT): $(dependencies)
-	$(COMPILE) \
-		$(OBJ_FOLDER)/*.o \
-		$(OBJ_FOLDER)/allegro/*.o \
-		$(OBJ_FOLDER)/events/*.o \
-		$(OBJ_FOLDER)/grass/*.o \
-		$(OBJ_FOLDER)/scenery/*.o \
-		$(OBJ_FOLDER)/ship/*.o \
-		$(OBJ_FOLDER)/alien/*.o \
-		$(OBJ_FOLDER)/tank/*.o \
-		$(OBJ_FOLDER)/block/*.o \
-		$(OBJ_FOLDER)/shot/*.o \
-		$(ALLEGRO_LIB) \
-		-o $(BIN_FOLDER)/$(PROJECT)
+$(PROJECT): $(FILES_O)
+	$(COMPILE) $^ $(ALLEGRO_LIB) -o $(DIR_BIN)/$(PROJECT)
 
-$(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c 
-	$(COMPILE) $(COMPILE_FLAGS) -c $< -I $(ALLEGRO_INCLUDE) -o $@
+$(FILES_O): $(DIR_O)/%.o : $(DIR_C)/%.c
+	$(COMPILE) $< $(COMPILE_FLAGS) -c -I $(ALLEGRO_INCLUDE) -o $@  
 
 run:
 	clear
-	$(BIN_FOLDER)/$(PROJECT).exe
+	$(DIR_BIN)/$(PROJECT).exe
 
 library:
-	ar -rcs $(LIB_FOLDER)/libCombat.a $(OBJ_FOLDER)/*.o
+	ar -rcs $(DIR_LIB)/libCombat.a $(DIR_O)/*.o
 
 clean:
-	clear
-	@rm -rvf $(OBJ_FOLDER)/*.o
-	@rm -rvf $(OBJ_FOLDER)/allegro/*.o
-	@rm -rvf $(OBJ_FOLDER)/events/*.o
-	@rm -rvf $(OBJ_FOLDER)/grass/*.o
-	@rm -rvf $(OBJ_FOLDER)/scenery/*.o
-	@rm -rvf $(OBJ_FOLDER)/ship/*.o
-	@rm -rvf $(OBJ_FOLDER)/alien/*.o
-	@rm -rvf $(OBJ_FOLDER)/tank/*.o
-	@rm -rvf $(OBJ_FOLDER)/block/*.o
-	@rm -rvf $(OBJ_FOLDER)/shot/*.o
-	@rm -rvf $(LIB_FOLDER)/*.a
-	@rm -rvf $(BIN_FOLDER)/*.exe
+	rm -rf $(FILES_X)
+	rm -rvf $(DIR_BIN)/$(PROJECT).exe
 
 help:
 	clear
@@ -122,8 +52,8 @@ help:
 # SRC = ./obj
 # OBJ = ./obj
 # INCLUDE = ./obj/h/include
-# LIB_FOLDER = ./lib
-# BIN_FOLDER = ./bin
+# DIR_LIB = ./lib
+# DIR_BIN = ./bin
 # COMPILE_FLAGS = -std=c11 -ansi -pedantic -Wall 
 
 # combatDependencies= \
@@ -146,18 +76,18 @@ help:
 # all:	combat
 
 # combat: $(combatDependencies)
-# 	$(COMPILE) -lAllegro -lCombat -L $(LIB_FOLDER) -L $(INCLUDE) -o $(BIN_FOLDER)/combat  
+# 	$(COMPILE) -lAllegro -lCombat -L $(DIR_LIB) -L $(INCLUDE) -o $(DIR_BIN)/combat  
 
 # $(OBJ)/%.o: $(SRC)/%.c 
 # 	$(COMPILE) -c $< -I $(ALLEGRO_INCLUDE) $(COMPILE_FLAGS) -o $@
 
 # run:
-# 	$(BIN_FOLDER)/combat.exe
+# 	$(DIR_BIN)/combat.exe
 
 # library:   
-# 	ar -rcs $(LIB_FOLDER)/libCombat.a $(OBJ)/*.o
+# 	ar -rcs $(DIR_LIB)/libCombat.a $(OBJ)/*.o
 
 # clean:
 # 	rm $(OBJ)/*.o 
-# 	rm $(BIN_FOLDER)/*.exe
-# 	rm $(LIB_FOLDER)/*.a
+# 	rm $(DIR_BIN)/*.exe
+# 	rm $(DIR_LIB)/*.a
