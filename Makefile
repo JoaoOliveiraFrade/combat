@@ -58,7 +58,10 @@ dependencies= \
 	$(OBJ_FOLDER)/tank/rotatesTank.o \
 	\
 	$(OBJ_FOLDER)/block/initBlock.o \
-	$(OBJ_FOLDER)/block/drawBlock.o
+	$(OBJ_FOLDER)/block/drawBlock.o \
+	\
+	$(OBJ_FOLDER)/shot/initShot.o
+	
 	
 all: $(PROJECT)
 
@@ -73,6 +76,7 @@ $(PROJECT): $(dependencies)
 		$(OBJ_FOLDER)/alien/*.o \
 		$(OBJ_FOLDER)/tank/*.o \
 		$(OBJ_FOLDER)/block/*.o \
+		$(OBJ_FOLDER)/shot/*.o \
 		$(ALLEGRO_LIB) \
 		-o $(BIN_FOLDER)/$(PROJECT)
 
@@ -97,6 +101,7 @@ clean:
 	@rm -rvf $(OBJ_FOLDER)/alien/*.o
 	@rm -rvf $(OBJ_FOLDER)/tank/*.o
 	@rm -rvf $(OBJ_FOLDER)/block/*.o
+	@rm -rvf $(OBJ_FOLDER)/shot/*.o
 	@rm -rvf $(LIB_FOLDER)/*.a
 	@rm -rvf $(BIN_FOLDER)/*.exe
 

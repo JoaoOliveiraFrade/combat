@@ -17,7 +17,7 @@
     float alpha;
     float speed;
     float xComp, yComp;
-    Point pCenter;
+    Point pCenterTank;
     Point pA;
     Point pB;
     Point pC;

@@ -10,7 +10,7 @@ void updateTank (Tank* tank, Block* block) {
   rotatesTank(tank);
   
   if (tankOnDisplayLimit(tank) && !collisionBlocksAndTank(block, tank)) { 
-    tank->pCenter.x += (tank->speed * tank->xComp);
-    tank->pCenter.y += (tank->speed * tank->yComp);
+    tank->pCenterTank.x += (tank->speed * tank->xComp);
+    tank->pCenterTank.y += (tank->speed * tank->yComp);
   }
 }

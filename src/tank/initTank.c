@@ -22,8 +22,8 @@ void initTank (Tank* tank) {
   float h = TANK_RADIUS * sin(tank->alpha);
 
   // init center
-  tank->pCenter.x = SCREEN_W / 4;
-  tank->pCenter.y = SCREEN_H / 7;
+  tank->pCenterTank.x = SCREEN_W / 4;
+  tank->pCenterTank.y = SCREEN_H / 7;
 
   // init points triangle
   tank->pA.x = 0.0;
