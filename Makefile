@@ -14,8 +14,8 @@ FILES_C = $(shell find . -name "*.c")
 FILES_X = $(shell find . -name "*.o")
 FILES_O = $(FILES_C:./$(DIR_C)/%.c=./$(DIR_O)/%.o)
 
-ALLEGRO_LIB = C:/dados/allegro/lib/liballegro-5.0.10-monolith-mt.a
-ALLEGRO_INCLUDE = C:/dados/allegro/include
+ALLEGRO_LIB = D:/allegro/lib/liballegro-5.0.10-monolith-mt.a
+ALLEGRO_INCLUDE = D:/allegro/include
 
 all: $(PROJECT)
 
