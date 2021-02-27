@@ -26,6 +26,6 @@ bool collisionBlocksAndTank (Block* block, Tank* tank) {
   
   float distance = sqrt( (distX * distX) + (distY * distY) );
 
-  return (distance <= TANK_RADIUS + CIRCLE_THICKNESS);
+  return (distance <= TANK_RADIUS);
 }
 
