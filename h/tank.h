@@ -26,7 +26,7 @@
 #endif
 
 void initTank (Tank* tank);
-void drawTank (Tank tank);
+void drawTank (Tank* tank);
 void updateTank (Tank* tank, Block* block);
 bool collisionBlocksAndTank (Block* block, Tank* tank);
 bool tankOnDisplayLimit (Tank* tank);

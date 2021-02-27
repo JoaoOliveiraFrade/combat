@@ -4,6 +4,7 @@
 #include "../h/alien.h"
 #include "../h/tank.h"
 #include "../h/block.h"
+#include "../h/shot.h"
 
 // int main(int argc, char **argv) {
 int main () {
@@ -15,7 +16,7 @@ int main () {
 
 	initAllegro();
 	initKeyboard();
-  initAddon();
+  	initAddon();
 	initPrimitivesAddon();
 
 	display = initDisplay();
@@ -29,6 +30,7 @@ int main () {
 	
 	Tank tank;
 	Block block;
+	Shot shot;
 	Ship ship;
 	Alien alien;
 
@@ -36,6 +38,7 @@ int main () {
 	initBlock(&block);
 	initShip(&ship);
 	initAlien(&alien);
+	initShot(&shot);
 
 	int playing = 1;
 	while(playing) {
@@ -44,8 +47,9 @@ int main () {
 
 		drawScenery();
 
-		drawTank(tank);
-		drawBlock(block);
+		drawTank(&tank);
+		drawBlock(&block);
+		drawShot(&shot);
 		// drawAlien(&alien);
 		// drawShip(&ship);
 

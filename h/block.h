@@ -22,5 +22,5 @@
   } Block;
 #endif
 
-void drawBlock (Block block);
+void drawBlock (Block* block);
 void initBlock (Block* block);

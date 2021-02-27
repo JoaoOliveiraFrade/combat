@@ -1,6 +1,6 @@
 #include "block.h"
 
-#define SHOT_RADIUS
+#define SHOT_RADIUS 10
 
 #ifndef SHOT
     #define SHOT
@@ -12,3 +12,6 @@
         ALLEGRO_COLOR color;
     } Shot;
 #endif
+
+void drawShot (Shot* shot);
+void initShot (Shot* shot);

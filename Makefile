@@ -60,7 +60,8 @@ dependencies= \
 	$(OBJ_FOLDER)/block/initBlock.o \
 	$(OBJ_FOLDER)/block/drawBlock.o \
 	\
-	$(OBJ_FOLDER)/shot/initShot.o
+	$(OBJ_FOLDER)/shot/initShot.o \
+	$(OBJ_FOLDER)/shot/drawShot.o 
 	
 	
 all: $(PROJECT)
