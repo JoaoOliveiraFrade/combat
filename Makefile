@@ -3,8 +3,9 @@ PROJECT = combat
 COMPILE = gcc
 COMPILE_FLAGS = -lm -std=c11 -pedantic -W -Wall #-ansi  
 
-DIR_H = h
-DIR_C = src
+DIR_SRC = src
+DIR_H = $(DIR_SRC)/h
+DIR_C = $(DIR_SRC)/c
 DIR_BIN = bin
 DIR_O = $(DIR_BIN)/o
 DIR_LIB = $(DIR_BIN)/lib
