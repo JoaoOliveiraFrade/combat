@@ -37,6 +37,7 @@ void rotatesTank (Tank* tank) {
 }
 
 void updateTank (Tank* tank, Block* block) {
+  printf("%d", block);
   rotate(&tank->pA, tank->angularSpeed);
   rotate(&tank->pB, tank->angularSpeed);
   rotate(&tank->pC, tank->angularSpeed);
