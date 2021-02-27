@@ -1,4 +1,6 @@
-#include "block.h"
+#include <allegro5/allegro.h>
+#include "point.h"
+#include "tank.h"
 
 #define SHOT_RADIUS 10
 
@@ -14,4 +16,4 @@
 #endif
 
 void drawShot (Shot* shot);
-void initShot (Shot* shot);
+void initShot (Shot* shot, Tank* tank);

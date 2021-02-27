@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 #include "../../h/combat.h"
 #include "../../h/block.h"
 #include "../../h/tank.h"

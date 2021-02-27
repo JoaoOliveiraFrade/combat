@@ -38,7 +38,7 @@ int main () {
 	initBlock(&block);
 	initShip(&ship);
 	initAlien(&alien);
-	initShot(&shot);
+	initShot(&shot, &tank);
 
 	int playing = 1;
 	while(playing) {
