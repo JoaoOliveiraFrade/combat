@@ -30,3 +30,5 @@ void drawTank (Tank tank);
 void updateTank (Tank* tank, Block* block);
 bool collisionBlocksAndTank (Block* block, Tank* tank);
 bool tankOnDisplayLimit (Tank* tank);
+void rotate (Point* P, float angle);
+void rotatesTank (Tank* tank);

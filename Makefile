@@ -55,6 +55,7 @@ dependencies= \
 	$(OBJ_FOLDER)/tank/updateTank.o \
 	$(OBJ_FOLDER)/tank/collisionBlocksAndTank.o \
 	$(OBJ_FOLDER)/tank/checkTankOnDisplayLimit.o \
+	$(OBJ_FOLDER)/tank/rotatesTank.o \
 	\
 	$(OBJ_FOLDER)/block/initBlock.o \
 	$(OBJ_FOLDER)/block/drawBlock.o
