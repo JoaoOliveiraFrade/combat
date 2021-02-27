@@ -3,26 +3,6 @@
 #include "../../h/combat.h"
 #include "../../h/block.h"
 
-bool tankOnTopLimit (Tank* tank) {
-  return (tank->pCenter.y - TANK_RADIUS + (tank->speed * tank->yComp) - CIRCLE_THICKNESS) >= 0;
-}
-
-bool tankOnBottomLimit (Tank* tank) {
-  return (tank->pCenter.y + TANK_RADIUS + (tank->speed * tank->yComp) + CIRCLE_THICKNESS) <= SCREEN_H;
-}
-
-bool tankOnRightLimit (Tank* tank) {
-  return (tank->pCenter.x + TANK_RADIUS + (tank->speed * tank->xComp) + CIRCLE_THICKNESS) <= SCREEN_W;
-}
-
-bool tankOnLeftLimit (Tank* tank) {
-  return (tank->pCenter.x - TANK_RADIUS + (tank->speed * tank->xComp) - CIRCLE_THICKNESS) >= 0;
-}
-
-bool tankOnLimit (Tank* tank) {
-  return (tankOnTopLimit(tank) && tankOnBottomLimit(tank) && tankOnRightLimit(tank) && tankOnLeftLimit(tank));
-}
-
 void rotate (Point* P, float angle) {
   float x = P->x;
   float y = P->y;
@@ -43,7 +23,7 @@ void updateTank (Tank* tank, Block* block) {
 
   rotatesTank(tank);
   
-  if (tankOnLimit(tank) && !collisionBlocksAndTank(block, tank)) { 
+  if (tankOnDisplayLimit(tank) && !collisionBlocksAndTank(block, tank)) { 
     tank->pCenter.x += (tank->speed * tank->xComp);
     tank->pCenter.y += (tank->speed * tank->yComp);
   }

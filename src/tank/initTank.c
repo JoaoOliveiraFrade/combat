@@ -3,13 +3,13 @@
 
 void initTank (Tank* tank) {
   // init internal angle
-  double pi = atan(1)*4;
-  tank->alpha = (pi/3);
+  double pi = atan(1) * 4;
+  tank->alpha = (pi / 3);
   float theta = pi/2 - tank->alpha;
 
   // init speed
   tank->speed = 0;
-  tank->constAngularSpeed = pi/360;
+  tank->constAngularSpeed = pi / 125;
   tank->angularSpeed = 0;
 
   // init components
